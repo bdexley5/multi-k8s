@@ -14,7 +14,7 @@ before_install:
   - gcloud config set project omega-cider-273410
   - gcloud config set compute/zone us-east4-a
   - gcloud container clusters get-credentials multi-cluster
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --from-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --passwd-stdin
   - docker build -t bdexley5/react-test -f ./client/Dockerfile.dev ./client
 scripts:
   - docker run -e CI=true bdexley5/docker-react npm run test
